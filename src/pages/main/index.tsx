@@ -13,12 +13,13 @@ function MainScreen() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: { height: 60, paddingBottom: 10 },
+        headerShown: false,
+        tabBarStyle: { height: 70, paddingBottom: 10 },
+        tabBarLabelStyle: { fontSize: 14 },
       }}>
       <Tab.Screen
-        name="Home"
+        name="首页"
         options={{
-          headerShown: false,
           tabBarIcon: ({
             focused,
             color,
@@ -34,9 +35,8 @@ function MainScreen() {
         component={HomeScreen}
       />
       <Tab.Screen
-        name="Todo"
+        name="待办"
         options={{
-          headerShown: false,
           tabBarIcon: ({
             focused,
             color,
@@ -52,9 +52,8 @@ function MainScreen() {
         component={TodoScreen}
       />
       <Tab.Screen
-        name="Func"
+        name="应用"
         options={{
-          headerShown: false,
           tabBarIcon: ({
             focused,
             color,
@@ -70,9 +69,8 @@ function MainScreen() {
         component={FuncScreen}
       />
       <Tab.Screen
-        name="Me"
+        name="我的"
         options={{
-          headerShown: false,
           tabBarIcon: ({
             focused,
             color,
