@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import DemoScreen from '../pages/demo'
 import HomeScreen from '../pages/home'
 import Login from '../pages/login'
+import MainScreen from '../pages/main'
 
 const Stack = createStackNavigator()
 
@@ -14,12 +15,7 @@ function NavigatorScreen() {
       <Screen
         name="home"
         options={{ headerShown: false }}
-        component={HomeScreen}
-      />
-      <Screen
-        name="demo"
-        options={{ headerShown: false }}
-        component={DemoScreen}
+        component={MainScreen}
       />
       <Screen name="login" options={{ headerShown: false }} component={Login} />
     </Navigator>
