@@ -12,11 +12,11 @@ function NavigatorScreen() {
   const { Navigator, Screen, Group } = Stack
   return (
     <Navigator>
-      <Screen
+      {/* <Screen
         name="home"
         options={{ headerShown: false }}
         component={MainScreen}
-      />
+      /> */}
       <Screen name="login" options={{ headerShown: false }} component={Login} />
     </Navigator>
   )
