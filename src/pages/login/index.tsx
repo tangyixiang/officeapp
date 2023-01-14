@@ -47,21 +47,10 @@ const Login = () => {
                       style={{ marginRight: 8 }}
                     />
                   </Pressable>
-
-                  // <Button
-                  //   variant="unstyled"
-                  //   size="md"
-                  //   leftIcon={
-                  //     <Icon name={show ? 'eye-off' : 'eye'} size={20} />
-                  //   }
-                  //   rounded="none"
-                  //   w="1/6"
-                  //   h="full"
-                  //   onPress={handleClick}></Button>
                 }
               />
             </FormControl>
-            <Button mt="2" size="lg" colorScheme="blue">
+            <Button mt="6" size="lg" colorScheme="blue">
               <Text color="white" fontSize="lg">
                 登录
               </Text>

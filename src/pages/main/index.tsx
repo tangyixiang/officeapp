@@ -13,6 +13,7 @@ function MainScreen() {
   return (
     <Tab.Navigator
       screenOptions={{
+        // headerTitleAlign: 'center',
         headerShown: false,
         tabBarStyle: { height: 70, paddingBottom: 10 },
         tabBarLabelStyle: { fontSize: 14 },

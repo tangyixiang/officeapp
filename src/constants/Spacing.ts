@@ -1,3 +1,3 @@
-const size: number = 12
+const Spacing: number = 4
 
-export default size
+export default Spacing

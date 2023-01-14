@@ -1,11 +1,9 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
-import DemoScreen from '../pages/demo'
-import HomeScreen from '../pages/home'
 import Login from '../pages/login'
 import MainScreen from '../pages/main'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import Apply from '../pages/home/components/Apply'
 
 const Stack = createStackNavigator()
 
@@ -13,11 +11,16 @@ function NavigatorScreen() {
   const { Navigator, Screen } = Stack
   return (
     <Navigator>
-      {/* <Screen
+      <Screen
         name="home"
         options={{ headerShown: false }}
         component={MainScreen}
-      /> */}
+      />
+      <Screen
+        name="apply"
+        options={{ title: '我的申请', headerTitleAlign: 'center' }}
+        component={Apply}
+      />
       <Screen name="login" options={{ headerShown: false }} component={Login} />
     </Navigator>
   )
