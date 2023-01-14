@@ -5,11 +5,12 @@ import DemoScreen from '../pages/demo'
 import HomeScreen from '../pages/home'
 import Login from '../pages/login'
 import MainScreen from '../pages/main'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const Stack = createStackNavigator()
 
 function NavigatorScreen() {
-  const { Navigator, Screen, Group } = Stack
+  const { Navigator, Screen } = Stack
   return (
     <Navigator>
       {/* <Screen
