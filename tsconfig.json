@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
+    "esModuleInterop": true,
     // "isolatedModules": false,
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "paths": {
