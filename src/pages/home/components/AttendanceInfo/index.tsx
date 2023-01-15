@@ -10,195 +10,180 @@ import {
   Pressable,
   Divider,
   Badge,
-  ZStack,
+  useToast,
 } from 'native-base'
 import BaseWrapper from '@/components/BaseWrapper'
 import BaseCard from '@/components/BaseCard'
 import Spacing from '@/constants/Spacing'
 import Color from '@/constants/Color'
-import Lottie from 'lottie-react-native'
-import LottieView from 'lottie-react-native'
 
 const AttendanceScreen = () => {
   const [goto, setGoto] = useState(true)
   const [goOff, setGoOff] = useState(false)
-  const [play, setPlay] = useState(false)
-  const animationRef = useRef<Lottie>(null)
+  const [goOffTime, setGoOffTime] = useState<String[]>([])
+
+  const toast = useToast()
 
   return (
-    <Box>
-      <ZStack alignItems="center" justifyContent="center">
-        <BaseWrapper>
-          <ScrollView>
-            <VStack space={Spacing}>
-              <BaseCard>
-                <HStack space={Spacing * 2} p={Spacing}>
-                  <Image
-                    style={styles.img}
-                    source={require('@/assets/img/avatar.png')}
-                  />
+    <BaseWrapper>
+      <ScrollView>
+        <VStack space={Spacing}>
+          <BaseCard>
+            <HStack space={Spacing * 2} p={Spacing}>
+              <Image
+                style={styles.img}
+                source={require('@/assets/img/avatar.png')}
+              />
+              <VStack space={Spacing}>
+                <Heading size="md">张三</Heading>
+                <Text fontSize="lg" color="gray.600">
+                  12月08日 星期四
+                </Text>
+              </VStack>
+            </HStack>
+          </BaseCard>
+          <BaseCard>
+            <VStack p={Spacing} space={Spacing * 2}>
+              <Box>
+                <HStack px={Spacing} space={Spacing}>
+                  <Box
+                    bg={Color.primary}
+                    style={styles.point}
+                    borderColor="coolGray.200"
+                    borderWidth="1"></Box>
                   <VStack space={Spacing}>
-                    <Heading size="md">张三</Heading>
-                    <Text fontSize="lg" color="gray.600">
-                      12月08日 星期四
-                    </Text>
+                    <HStack space={Spacing}>
+                      <Text
+                        style={{ fontSize: 15, verticalAlign: 'middle' }}
+                        color="gray.600">
+                        上班时间 09:00
+                      </Text>
+                      <Badge colorScheme="success" variant={'solid'}>
+                        正常
+                      </Badge>
+                    </HStack>
+
+                    {goto && <Heading size="sm">打卡时间 08:59</Heading>}
                   </VStack>
                 </HStack>
-              </BaseCard>
-              <BaseCard>
-                <VStack p={Spacing} space={Spacing * 2}>
-                  <Box>
-                    <HStack px={Spacing} space={Spacing}>
-                      <Box
-                        bg={Color.primary}
-                        style={styles.point}
-                        borderColor="coolGray.200"
-                        borderWidth="1"></Box>
-                      <VStack space={Spacing}>
-                        <Text
-                          style={{ fontSize: 15, verticalAlign: 'middle' }}
-                          color="gray.600">
-                          上班时间 09:00
-                        </Text>
-                        {goto && (
-                          <HStack space={Spacing / 2}>
-                            <Heading size="md">打卡成功 08:59</Heading>
-                            <Badge colorScheme="success" variant={'solid'}>
-                              正常
-                            </Badge>
-                          </HStack>
-                        )}
-                      </VStack>
-                    </HStack>
-                  </Box>
-                  {!goto && (
-                    <Pressable>
-                      {({ isHovered, isFocused, isPressed }) => {
-                        return (
-                          <Center>
-                            <Box
-                              borderWidth="1"
-                              borderColor="coolGray.300"
-                              shadow="3"
-                              width="150"
-                              height="150"
-                              bg={
-                                isPressed
-                                  ? 'indigo.500'
-                                  : isHovered
-                                  ? 'indigo.500'
-                                  : 'indigo.700'
-                              }
-                              p="5"
-                              rounded="75"
-                              style={{
-                                transform: [
-                                  {
-                                    scale: isPressed ? 0.96 : 1,
-                                  },
-                                ],
-                              }}>
-                              <Center flex="1">
-                                <Heading size="lg" color="muted.50">
-                                  上班打卡
-                                </Heading>
-                              </Center>
-                            </Box>
+              </Box>
+              {!goto && (
+                <Pressable>
+                  {({ isHovered, isFocused, isPressed }) => {
+                    return (
+                      <Center>
+                        <Box
+                          borderWidth="1"
+                          borderColor="coolGray.300"
+                          shadow="3"
+                          width="150"
+                          height="150"
+                          bg={
+                            isPressed
+                              ? 'indigo.500'
+                              : isHovered
+                              ? 'indigo.500'
+                              : 'indigo.700'
+                          }
+                          p="5"
+                          rounded="75"
+                          style={{
+                            transform: [
+                              {
+                                scale: isPressed ? 0.96 : 1,
+                              },
+                            ],
+                          }}>
+                          <Center flex="1">
+                            <Heading size="lg" color="muted.50">
+                              上班打卡
+                            </Heading>
                           </Center>
-                        )
-                      }}
-                    </Pressable>
-                  )}
-                  <Divider />
-                  <Box>
-                    <HStack px={Spacing} space={Spacing}>
-                      <Box
-                        bg="warning.400"
-                        style={styles.point}
-                        borderColor="coolGray.200"
-                        borderWidth="1"></Box>
-                      <VStack space={Spacing}>
-                        <Text
-                          style={{ fontSize: 15, verticalAlign: 'middle' }}
-                          color="gray.600">
-                          下班时间 18:00
-                        </Text>
-                        {goOff && (
-                          <HStack space={Spacing / 2}>
-                            <Heading size="md">打卡成功 18:00</Heading>
-                            <Badge colorScheme="success" variant={'solid'}>
-                              正常
-                            </Badge>
-                          </HStack>
-                        )}
-                      </VStack>
-                    </HStack>
-                  </Box>
-                  {!goOff && (
-                    <Pressable
-                      onPress={() => {
-                        animationRef.current?.play()
-                        setPlay(true)
-                      }}>
-                      {({ isHovered, isFocused, isPressed }) => {
-                        return (
-                          <Center>
-                            <Box
-                              borderWidth="1"
-                              borderColor="coolGray.300"
-                              shadow="3"
-                              width="150"
-                              height="150"
-                              bg={
-                                isPressed
-                                  ? 'warning.300'
-                                  : isHovered
-                                  ? 'warning.300'
-                                  : 'warning.400'
-                              }
-                              p="5"
-                              rounded="75"
-                              style={{
-                                transform: [
-                                  {
-                                    scale: isPressed ? 0.96 : 1,
-                                  },
-                                ],
-                              }}>
-                              <Center flex="1">
-                                <Heading size="lg" color="muted.50">
-                                  下班打卡
-                                </Heading>
-                              </Center>
-                            </Box>
+                        </Box>
+                      </Center>
+                    )
+                  }}
+                </Pressable>
+              )}
+              <Divider />
+              <Box>
+                <HStack px={Spacing} space={Spacing}>
+                  <Box
+                    bg="warning.400"
+                    style={styles.point}
+                    borderColor="coolGray.200"
+                    borderWidth="1"></Box>
+                  <VStack space={Spacing}>
+                    <Text
+                      style={{ fontSize: 15, verticalAlign: 'middle' }}
+                      color="gray.600">
+                      下班时间 18:00
+                    </Text>
+                    {goOffTime.map((item, index) => (
+                      <Heading key={index} size="sm">
+                        打卡时间:{item}
+                      </Heading>
+                    ))}
+                    {goOff && (
+                      <HStack space={Spacing / 2}>
+                        <Heading size="md">打卡成功 18:00</Heading>
+                        <Badge colorScheme="success" variant={'solid'}>
+                          正常
+                        </Badge>
+                      </HStack>
+                    )}
+                  </VStack>
+                </HStack>
+              </Box>
+              {!goOff && (
+                <Pressable
+                  onPress={() => {
+                    toast.show({
+                      description: '打卡成功',
+                    })
+                    setGoOffTime([...goOffTime, '18:00'])
+                  }}>
+                  {({ isHovered, isFocused, isPressed }) => {
+                    return (
+                      <Center>
+                        <Box
+                          borderWidth="1"
+                          borderColor="coolGray.300"
+                          shadow="3"
+                          width="150"
+                          height="150"
+                          bg={
+                            isPressed
+                              ? 'warning.300'
+                              : isHovered
+                              ? 'warning.300'
+                              : 'warning.400'
+                          }
+                          p="5"
+                          rounded="75"
+                          style={{
+                            transform: [
+                              {
+                                scale: isPressed ? 0.96 : 1,
+                              },
+                            ],
+                          }}>
+                          <Center flex="1">
+                            <Heading size="lg" color="muted.50">
+                              下班打卡
+                            </Heading>
                           </Center>
-                        )
-                      }}
-                    </Pressable>
-                  )}
-                </VStack>
-              </BaseCard>
+                        </Box>
+                      </Center>
+                    )
+                  }}
+                </Pressable>
+              )}
             </VStack>
-          </ScrollView>
-        </BaseWrapper>
-
-        <Center>
-          <LottieView
-            ref={animationRef}
-            style={{ width: 240 }}
-            source={require('@/assets/animation/success.json')}
-            loop={false}
-            onAnimationFinish={isCancelled => {
-              console.log('完成' + isCancelled)
-              if (!isCancelled && play) {
-                animationRef.current?.reset()
-                setPlay(false)
-              }
-            }}
-          />
-        </Center>
-      </ZStack>
-    </Box>
+          </BaseCard>
+        </VStack>
+      </ScrollView>
+    </BaseWrapper>
   )
 }
 
