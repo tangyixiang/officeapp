@@ -2,8 +2,9 @@ import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import Login from '../pages/login'
-import MainScreen from '../pages/main'
-import Apply from '../pages/home/components/Apply'
+import MainScreen from '@/pages/main'
+import Apply from '@/pages/home/components/Apply'
+import AttendanceScreen from '@/pages/home/components/AttendanceInfo'
 
 const Stack = createStackNavigator()
 
@@ -15,6 +16,11 @@ function NavigatorScreen() {
         name="home"
         options={{ headerShown: false }}
         component={MainScreen}
+      />
+      <Screen
+        name="attendanceDetail"
+        options={{ title: '考勤打卡', headerTitleAlign: 'center' }}
+        component={AttendanceScreen}
       />
       <Screen
         name="apply"

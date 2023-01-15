@@ -1,34 +1,37 @@
 import React from 'react'
 import { Image, StyleSheet, TouchableOpacity } from 'react-native'
-import { HStack, Text, VStack } from 'native-base'
-import { CompositeScreenProps, useNavigation } from '@react-navigation/native'
+import { HStack, Text } from 'native-base'
+import { useNavigation } from '@react-navigation/native'
+import Spacing from '@/constants/Spacing'
 
 const CommonFunc = () => {
   const navigation = useNavigation<any>()
   return (
-    <HStack space="8" p="4" justifyContent="center">
-      <TouchableOpacity style={styles.button}>
+    <HStack space={Spacing * 2} p={Spacing / 2} justifyContent="center">
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('attendanceDetail')}>
         <Image
+          style={styles.img}
           source={require('../../../assets/icon/location.png')}
-          style={{ width: 40, height: 40 }}
         />
-        <Text style={{ textAlign: 'center', paddingTop: 8 }}>打卡</Text>
+        <Text style={styles.text}>打卡</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
         <Image
+          style={styles.img}
           source={require('../../../assets/icon/calendar.png')}
-          style={{ width: 40, height: 40 }}
         />
-        <Text style={{ textAlign: 'center', paddingTop: 8 }}>考勤查询</Text>
+        <Text style={styles.text}>考勤查询</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('apply')}>
         <Image
+          style={styles.img}
           source={require('../../../assets/icon/approve.png')}
-          style={{ width: 40, height: 40 }}
         />
-        <Text style={{ textAlign: 'center', paddingTop: 8 }}>我的申请</Text>
+        <Text style={styles.text}>我的申请</Text>
       </TouchableOpacity>
     </HStack>
   )
@@ -41,5 +44,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     // backgroundColor: '#DDDDDD',
     padding: 10,
+  },
+  img: {
+    width: 40,
+    height: 40,
+  },
+  text: {
+    textAlign: 'center',
+    paddingTop: 8,
   },
 })
