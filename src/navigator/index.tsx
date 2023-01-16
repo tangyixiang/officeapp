@@ -5,6 +5,7 @@ import Login from '../pages/login'
 import MainScreen from '@/pages/main'
 import Apply from '@/pages/home/components/Apply'
 import AttendanceScreen from '@/pages/home/components/AttendanceInfo'
+import TodoScreen from '@/pages/todo'
 
 const Stack = createStackNavigator()
 
@@ -21,6 +22,11 @@ function NavigatorScreen() {
         name="attendanceDetail"
         options={{ title: '考勤打卡', headerTitleAlign: 'center' }}
         component={AttendanceScreen}
+      />
+      <Screen
+        name="todo"
+        options={{ title: '待办', headerTitleAlign: 'center' }}
+        component={TodoScreen}
       />
       <Screen
         name="apply"

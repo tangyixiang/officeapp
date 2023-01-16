@@ -140,7 +140,6 @@ const AttendanceScreen = () => {
             toast.show({
               description: '打卡成功',
             })
-
             setdisable(false)
           }}>
           {({ isHovered, isFocused, isPressed }) => {

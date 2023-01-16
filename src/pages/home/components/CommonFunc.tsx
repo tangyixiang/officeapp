@@ -7,7 +7,7 @@ import Spacing from '@/constants/Spacing'
 const CommonFunc = () => {
   const navigation = useNavigation<any>()
   return (
-    <HStack space={Spacing * 2} p={Spacing / 2} justifyContent="center">
+    <HStack space={Spacing} p={Spacing / 2} justifyContent="center">
       <TouchableOpacity
         style={styles.button}
         onPress={() => navigation.navigate('attendanceDetail')}>
@@ -32,6 +32,15 @@ const CommonFunc = () => {
           source={require('../../../assets/icon/approve.png')}
         />
         <Text style={styles.text}>我的申请</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('todo')}>
+        <Image
+          style={styles.img}
+          source={require('../../../assets/icon/todo.png')}
+        />
+        <Text style={styles.text}>待办</Text>
       </TouchableOpacity>
     </HStack>
   )

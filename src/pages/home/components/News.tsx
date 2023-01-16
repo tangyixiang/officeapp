@@ -11,7 +11,7 @@ const News = () => {
           公告通知
         </Heading>
         <TouchableOpacity>
-          <Icon name="arrow-round-forward" size={26} />
+          <Icon name="ios-arrow-forward" size={26} />
         </TouchableOpacity>
       </Box>
       <HStack space="4">

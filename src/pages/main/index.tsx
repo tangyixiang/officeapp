@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Icon from 'react-native-ionicons'
 import HomeScreen from '../home'
-import TodoScreen from '../todo'
 import FuncScreen from '../func'
 import MeScreen from '../me'
+import MessageScreen from '../message'
 
 const Tab = createBottomTabNavigator()
 
@@ -36,25 +36,11 @@ function MainScreen() {
         component={HomeScreen}
       />
       <Tab.Screen
-        name="待办"
-        options={{
-          tabBarIcon: ({
-            focused,
-            color,
-            size,
-          }: {
-            focused: boolean
-            color: string
-            size: number
-          }) => {
-            return <Icon name="barcode" size={size} color={color} />
-          },
-        }}
-        component={TodoScreen}
-      />
-      <Tab.Screen
         name="应用"
         options={{
+          title: '应用',
+          headerShown: true,
+          headerTitleAlign: 'center',
           tabBarIcon: ({
             focused,
             color,
@@ -68,6 +54,23 @@ function MainScreen() {
           },
         }}
         component={FuncScreen}
+      />
+      <Tab.Screen
+        name="消息"
+        options={{
+          tabBarIcon: ({
+            focused,
+            color,
+            size,
+          }: {
+            focused: boolean
+            color: string
+            size: number
+          }) => {
+            return <Icon name="ios-chatbubbles" size={size} color={color} />
+          },
+        }}
+        component={MessageScreen}
       />
       <Tab.Screen
         name="我的"
